@@ -25,13 +25,17 @@ let package = Package(
         .target(
             name: "VueFlux",
             path: "VueFlux",
-            sources: ["*", "../VueFluxInternalCore"]
+            dependencies: ["VueFluxInternalCore"]
         ),
         .target(
             name: "VueFluxReactive",
-            dependencies: ["VueFlux"],
-            path: "VueFluxReactive"
+            path: "VueFluxReactive",
+            dependencies: ["VueFlux"]
         ),
+        .target(
+            name: "VueFluxInternalCore",
+            path: "VueFluxInternalCore"
+        )
         .testTarget(
             name: "VueFluxTests",
             dependencies: ["VueFlux", "VueFluxReactive"],
