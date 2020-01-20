@@ -33,7 +33,7 @@ let package = Package(
             path: "VueFluxReactive"
         ),
         .testTarget(
-            name: "Tests",
+            name: "VueFluxTests",
             dependencies: ["VueFlux", "VueFluxReactive"],
             path: "Tests"
         )
