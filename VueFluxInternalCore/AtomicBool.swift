@@ -1,13 +1,13 @@
 import Foundation
 
-final class AtomicBool: ExpressibleByBooleanLiteral {
+public final class AtomicBool: ExpressibleByBooleanLiteral {
     private let rawValue = UnsafeMutablePointer<Int32>.allocate(capacity: 1)
     
-    var value: Bool {
+    public var value: Bool {
         return rawValue.pointee == true.int32Value
     }
     
-    init(booleanLiteral value: Bool) {
+    public init(booleanLiteral value: Bool) {
         rawValue.initialize(to: value.int32Value)
     }
     
@@ -16,7 +16,7 @@ final class AtomicBool: ExpressibleByBooleanLiteral {
         rawValue.deallocate()
     }
     
-    func compareAndSwapBarrier(old: Bool, new: Bool) -> Bool {
+    public func compareAndSwapBarrier(old: Bool, new: Bool) -> Bool {
         return OSAtomicCompareAndSwap32Barrier(old.int32Value, new.int32Value, rawValue)
     }
 }

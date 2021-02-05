@@ -1,3 +1,5 @@
+import VueFluxInternalCore
+
 /// Manages a State and commits the action received via dispatcher to mutations.
 open class Store<State: VueFlux.State> {
     private let dispatcher = Dispatcher<State>()

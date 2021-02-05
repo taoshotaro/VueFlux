@@ -1,4 +1,5 @@
 import VueFlux
+import VueFluxInternalCore
 
 /// A stream that can be sending values over time.
 public struct Signal<Value> {

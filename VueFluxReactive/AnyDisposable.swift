@@ -1,4 +1,5 @@
 import VueFlux
+import VueFluxInternalCore
 
 /// Disposable that consist of any function.
 public final class AnyDisposable: Disposable {

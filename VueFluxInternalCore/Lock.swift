@@ -1,7 +1,7 @@
 import Foundation
 
 /// Coordinates the operation of multiple threads of execution.
-struct Lock {
+public struct Lock {
     @available(iOS 10.0, *)
     @available(macOS 10.12, *)
     @available(tvOS 10.0, *)
@@ -66,12 +66,12 @@ struct Lock {
     private let inner: NSLocking
     
     /// Attempts to acquire a lock, blocking a thread’s execution until the lock can be acquired.
-    func lock() {
+    public func lock() {
         inner.lock()
     }
     
     /// Relinquishes a previously acquired lock.
-    func unlock() {
+    public func unlock() {
         inner.unlock()
     }
     
@@ -79,7 +79,7 @@ struct Lock {
     ///
     /// - Parameters:
     ///   - recursive: A Bool value indicating whether locking is recursive.
-    init(recursive: Bool) {
+    public init(recursive: Bool) {
         if #available(*, iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0), !recursive {
             inner = OSUnfairLock()
         } else {

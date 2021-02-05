@@ -1,11 +1,11 @@
 /// Collection of values of type `Element` that to be able to remove value by key.
-struct Storage<Element> {
+public struct Storage<Element> {
     private var elements = ContiguousArray<Element>()
     private var keyRawValues = ContiguousArray<Key.RawValue>()
     private var nextKey = Key.first
     
     /// Create the new, empty storage.
-    init() {}
+    public init() {}
     
     /// Add a new element.
     ///
@@ -14,7 +14,7 @@ struct Storage<Element> {
     ///
     /// - Returns: A key for remove given element.
     @discardableResult
-    mutating func add(_ element: Element) -> Key {
+    public mutating func add(_ element: Element) -> Key {
         let key = nextKey
         nextKey = key.next
         
@@ -31,7 +31,7 @@ struct Storage<Element> {
     ///
     /// - Returns: A removed element.
     @discardableResult
-    mutating func remove(for key: Key) -> Element? {
+    public mutating func remove(for key: Key) -> Element? {
         guard let index = indices.first(where: { keyRawValues[$0] == key.rawValue }) else { return nil }
         
         keyRawValues.remove(at: index)
@@ -40,26 +40,26 @@ struct Storage<Element> {
 }
 
 extension Storage: RandomAccessCollection {
-    var startIndex: Int {
+    public var startIndex: Int {
         return elements.startIndex
     }
     
-    var endIndex: Int {
+    public var endIndex: Int {
         return elements.endIndex
     }
     
-    subscript(index: Int) -> Element {
+    public subscript(index: Int) -> Element {
         return elements[index]
     }
     
-    func makeIterator() -> IndexingIterator<ContiguousArray<Element>> {
+    public func makeIterator() -> IndexingIterator<ContiguousArray<Element>> {
         return elements.makeIterator()
     }
 }
 
 extension Storage {
     /// An unique key for remove element.
-    struct Key {
+    public struct Key {
         fileprivate typealias RawValue = UInt64
         
         fileprivate let rawValue: RawValue

@@ -1,4 +1,5 @@
 import VueFlux
+import VueFluxInternalCore
 
 /// A container that automatically dispose all added disposables when deinitialized.
 /// Itself also behaves as Disposable.

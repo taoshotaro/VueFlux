@@ -1,6 +1,6 @@
 /// Encapsulate the function and make it cancelable.
 /// A function will not be executed after canceling, except already in progress execution.
-final class CancelableProcedure<Value> {
+public final class CancelableProcedure<Value> {
     /// A Bool value indicating whether canceled.
     var isCanceled: Bool {
         return _isCanceled.value
@@ -13,7 +13,7 @@ final class CancelableProcedure<Value> {
     ///
     /// - Parameters:
     ///   - execute: A function to be executed by calling `execute(with:)` until canceled.
-    init(_ execute: @escaping (Value) -> Void) {
+    public init(_ execute: @escaping (Value) -> Void) {
         _execute = execute
     }
     
@@ -21,14 +21,14 @@ final class CancelableProcedure<Value> {
     ///
     /// - Parameters:
     ///   - value: A value to be pass to specified function.
-    func execute(with value: @autoclosure () -> Value) {
+    public func execute(with value: @autoclosure () -> Value) {
         guard !isCanceled, let execute = _execute else { return }
         execute(value())
     }
     
     /// Cancel the specified function.
     /// Cancellation does not affect already in progress execution.
-    func cancel() {
+    public func cancel() {
         guard _isCanceled.compareAndSwapBarrier(old: false, new: true) else { return }
         _execute = nil
     }

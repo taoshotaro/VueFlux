@@ -1,3 +1,5 @@
+import VueFluxInternalCore
+
 /// An action dispatcher for subscribed dispatch functions.
 final class Dispatcher<State: VueFlux.State> {
     typealias Observers = Storage<(State.Action) -> Void>

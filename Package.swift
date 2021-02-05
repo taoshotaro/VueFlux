@@ -15,13 +15,26 @@ let package = Package(
         .library(
             name: "VueFlux",
             targets: ["VueFlux"]
+        ),
+        .library(
+            name: "VueFluxReactive",
+            targets: ["VueFluxReactive"]
         )
     ],
     targets: [
         .target(
+            name: "VueFluxInternalCore",
+            path: "VueFluxInternalCore"
+        ),
+        .target(
             name: "VueFlux",
-            path: "./",
-            sources: ["VueFlux", "VueFluxInternalCore"]
+            dependencies: ["VueFluxInternalCore"],
+            path: "VueFlux"
+        ),
+        .target(
+            name: "VueFluxReactive",
+            dependencies: ["VueFluxInternalCore"],
+            path: "VueFluxReactive"
         )
     ],
     swiftLanguageVersions: [.v4_2]

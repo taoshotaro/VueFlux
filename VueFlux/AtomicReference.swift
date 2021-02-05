@@ -1,3 +1,5 @@
+import VueFluxInternalCore
+
 /// A value reference that may be updated atomically.
 public final class AtomicReference<Value> {
     /// Atomically value getter and setter.

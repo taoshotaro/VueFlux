@@ -1,4 +1,5 @@
 import VueFlux
+import VueFluxInternalCore
 
 /// Represents the wrapper around a function to forward values to signal.
 public final class Sink<Value> {
